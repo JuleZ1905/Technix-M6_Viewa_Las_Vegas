@@ -1,0 +1,16 @@
+{
+    "name": "julian/m6_viewa_las_vegas",
+    "description": "Las Vegas Strip",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Julian\\M6ViewaLasVegas\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "JuleZ"
+        }
+    ],
+    "require": {}
+}
