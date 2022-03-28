@@ -9,8 +9,8 @@
 
   <body>
     <h1 class="header">Viewa Las Vegas</h1>
-    ~~~HOTEL1-TEXT~~~
-    ~~~HOTEL2-TEXT~~~
-    ~~~HOTEL3-TEXT~~~
+    {{ for hotel in hotels}}
+      {{ hotel.getContent() }}
+    {{ endfor }}
   </body>
 </html>
