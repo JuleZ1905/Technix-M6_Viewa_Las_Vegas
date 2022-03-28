@@ -3,8 +3,9 @@
 require('vendor/autoload.php');
 
 use Julian\M6ViewaLasVegas\Hotel;
+use TYPO3Fluid\Fluid\View\TemplateView;
 
-$changes['HOTEL1-TEXT'] = new Hotel(
+$changes[] = new Hotel(
     'Polo Towers By Diamond Resorts', 
     'https://t-cf.bstatic.com/xdata/images/hotel/square200/302715552.webp?k=15ea8ca92f34bae6880d037ed810b726232c466ca6a7c80c51f13a3204836fb1&o=&s=1', 
     'Dieses Resort in Las Vegas erwartet Sie auf dem berühmten Strip in der Nähe mehrerer Casinos, Spas und
@@ -20,7 +21,7 @@ Massagen versprechen Entspannung.
 Den Unterhaltungs- und Show-Komplex MGM Grand erreichen Sie zu Fuß in knapp 10 Minuten. Vom internationalen
 Flughafen McCarran trennen Sie rund 4 km.');
 
-$changes['HOTEL2-TEXT'] = new Hotel(
+$changes[] = new Hotel(
     'TI - Treasure Island Hotel & Casino', 
     'https://t-cf.bstatic.com/xdata/images/hotel/square200/63000008.webp?k=d8e3f0449fbc38eb1392526f02f2ff51432c727b20d94244e1192a0bc27d6f09&o=&s=1', 
     'Das Courtyard Las Vegas Convention Center liegt nur 0,4 km vom Las Vegas
@@ -38,7 +39,7 @@ Verkehrssystem Las Vegas Monorail erreichen Sie viele Geschäfte,
 Restaurants und Bars am Las Vegas Strip.
 ');
 
-$changes['HOTEL3-TEXT'] = new Hotel( 
+$changes[] = new Hotel( 
     'Courtyard by Marriott Las Vegas Convention Center', 
     'https://t-cf.bstatic.com/xdata/images/hotel/square200/18241355.webp?k=592472c47db323769a0014f5281060c3914173432dfc0a22ba657eded28618b0&o=&s=1', 
     'Das Best Western Plus Casino Royale - Center Strip liegt 1,6 km vom
@@ -57,15 +58,15 @@ Shops sind weniger als 5 Gehminuten vom Best Western Plus Casino Royale
 - Center Strip entfernt. Zur Fashion Show Mall gelangen Sie nach 10
 Gehminuten.');
 
+$view = new TemplateView();
+$paths = $view->getTemplatePaths();
 
-$output = file_get_contents('src/index.html');
+$paths->setTemplatePathAndFilename('templates/main.html');
 
-foreach ($changes as $key => $value) { 
-    $output = str_replace(
-        "~~~$key~~~",
-        $value->getContent(),
-        $output
-    );
-}
+$view->assignMultiple([
+    'hotels' => $changes
+]);
+
+$output = $view->render();
 
 echo $output;

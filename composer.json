@@ -12,5 +12,7 @@
             "name": "JuleZ"
         }
     ],
-    "require": {}
+    "require": {
+        "typo3fluid/fluid": "^2.7"
+    }
 }

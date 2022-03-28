@@ -39,18 +39,4 @@ class Hotel
     {
         return $this->header;
     }
-
-    public function getContent(){
-        return <<<CONTENT
-        <div class="hotel">
-        <h1>$this->header</h1>
-        <img
-          src="$this->img"
-        />
-        <p>
-          $this->description
-        </p>
-      </div>
-CONTENT;
-    }
 }
