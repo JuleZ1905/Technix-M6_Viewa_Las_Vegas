@@ -9,8 +9,16 @@
 
   <body>
     <h1 class="header">Viewa Las Vegas</h1>
-    {{ for hotel in hotels}}
-      {{ hotel.getContent() }}
-    {{ endfor }}
+    {% for hotel in hotels %}
+    <div class="hotel">
+      <h1>{{ hotel.header }}</h1>
+      <img
+        src="{{ hotel.img }}"
+      />
+      <p>
+        {{ hotel.description }}
+      </p>
+    </div>
+    {% endfor %}
   </body>
 </html>
