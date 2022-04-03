@@ -39,4 +39,9 @@ class Hotel
     {
         return $this->header;
     }
+
+    public function getShortText()
+    {
+        return substr($this->description, 0, 210) . '...';
+    }
 }
